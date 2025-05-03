@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <!-- header row with logo -->
+    <div class="header">
+        <img id="tentacles" src="assets/tentacles.png">
+        <h1 class="header-text">Sea Monster Crowdfunding</h1>
+    </div>
+
+    <!-- background info about company -->
+    <h2>Welcome to Sea Monster!</h2>
+    <div id="description-container">
+        <p>The purpose of our company is to fund independent games. We've been in operation for 12 years.</p>
+    </div>
+
+    <!-- top games & other interesting stats -->
+    <h2>Stats</h2>
+    <div class="stats-container">
+        <div class="stats-card">
+            <h3>Individual Contributions</h3>
+            <p id="num-contributions">
+            </p>
+        </div>
+        <div class="stats-card">
+            <h3>Total Raised</h3>
+            <p id="total-raised">
+            </p>
+        </div>
+        <div class="stats-card">
+            <h3>Total Number of Games</h3>
+            <p id="num-games">
+            </p>
+        </div>
+    </div>
+    <div class="stats-container" id="top-games">
+        <div class="stats-card" id="first-game">
+            <h3>🥇 Top Funded Game</h3>
+        </div>
+        <div class="stats-card" id="second-game">
+            <h3>🥈 Runner Up</h3>
+        </div>
+    </div>
+
+    <!-- list of games funded by Sea Monster -->
+    <h2>Our Games</h2>
+    <p>Check out each of our games below!</p>
+    <div id="button-container">
+        <button id="unfunded-btn">Show Unfunded Only</button>
+        <button id="funded-btn">Show Funded Only</button>
+        <button id="all-btn">Show All Games</button>
+    </div>
+    <div id="games-container">
+
+    </div>
+
+    <script type="module" src="index.js"></script>
+  </body>
+</html>@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Cabin';
+    background-color: #758190;
+}
+
+#tentacles {
+    width: 50px;
+}
+
+.header {
+    display: flex;
+    background-color: lightblue;
+    padding: 1%;
+    align-items: center;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+}
+
+.stats-container {
+    display: flex;
+}
+
+.stats-card {
+    background-color: #a8b0bc;
+    border-radius: 7px;
+    padding: 1%;
+    margin: 1%;
+    width: 100%;
+    text-align: center;
+}
+
+#num-contributions, #total-raised, #num-games {
+    font-size: 50px;
+}
+
+#games-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.game-img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #FFFFFF;
+}
+
+.game-card {
+    background-color: #FFFFFF;
+    padding: 1%;
+    margin: 1%;
+    width: 300px;
+    text-align: center;
+    border-radius: 7px;
+}
+
+.game-card:hover {
+    cursor: pointer;
+    box-shadow: 0 0 30px lightblue;
+}
+
+#button-container {
+    text-align: center;
+}
+
+button {
+    font-family: 'Cabin';
+    border: none;
+    padding: 1%;
+    margin: 1%;
+    border-radius: 7px;
+}/*****************************************************************************
+ * Challenge 2: Review the provided code. The provided code includes:
+ * -> Statements that import data from games.js
+ * -> A function that deletes all child elements from a parent element in the DOM
+*/
+
+// import the JSON data about the crowd funded games from the games.js file
+import GAMES_DATA from './games.js';
+
+// create a list of objects to store the data about the games using JSON.parse
+const GAMES_JSON = JSON.parse(GAMES_DATA)
+
+// remove all child elements from a parent element in the DOM
+function deleteChildElements(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+/*****************************************************************************
+ * Challenge 3: Add data about each game as a card to the games-container
+ * Skills used: DOM manipulation, for loops, template literals, functions
+*/
+
+// grab the element with the id games-container
+const gamesContainer = document.getElementById("games-container");
+
+// create a function that adds all data from the games array to the page
+function addGamesToPage(games) {
+
+    // loop over each item in the data
+
+
+        // create a new div element, which will become the game card
+
+
+        // add the class game-card to the list
+
+
+        // set the inner HTML using a template literal to display some info 
+        // about each game
+        // TIP: if your images are not displaying, make sure there is space
+        // between the end of the src attribute and the end of the tag ("/>")
+
+
+        // append the game to the games-container
+
+}
+
+// call the function we just defined using the correct variable
+// later, we'll call this function using a different list of games
+
+
+/*************************************************************************************
+ * Challenge 4: Create the summary statistics at the top of the page displaying the
+ * total number of contributions, amount donated, and number of games on the site.
+ * Skills used: arrow functions, reduce, template literals
+*/
+
+// grab the contributions card element
+const contributionsCard = document.getElementById("num-contributions");
+
+// use reduce() to count the number of total contributions by summing the backers
+
+
+// set the inner HTML using a template literal and toLocaleString to get a number with commas
+
+
+// grab the amount raised card, then use reduce() to find the total amount raised
+const raisedCard = document.getElementById("total-raised");
+
+// set inner HTML using template literal
+
+
+// grab number of games card and set its inner HTML
+const gamesCard = document.getElementById("num-games");
+
+
+/*************************************************************************************
+ * Challenge 5: Add functions to filter the funded and unfunded games
+ * total number of contributions, amount donated, and number of games on the site.
+ * Skills used: functions, filter
+*/
+
+// show only games that do not yet have enough funding
+function filterUnfundedOnly() {
+    deleteChildElements(gamesContainer);
+
+    // use filter() to get a list of games that have not yet met their goal
+
+
+    // use the function we previously created to add the unfunded games to the DOM
+
+}
+
+// show only games that are fully funded
+function filterFundedOnly() {
+    deleteChildElements(gamesContainer);
+
+    // use filter() to get a list of games that have met or exceeded their goal
+
+
+    // use the function we previously created to add unfunded games to the DOM
+
+}
+
+// show all games
+function showAllGames() {
+    deleteChildElements(gamesContainer);
+
+    // add all games from the JSON data to the DOM
+
+}
+
+// select each button in the "Our Games" section
+const unfundedBtn = document.getElementById("unfunded-btn");
+const fundedBtn = document.getElementById("funded-btn");
+const allBtn = document.getElementById("all-btn");
+
+// add event listeners with the correct functions to each button
+
+
+/*************************************************************************************
+ * Challenge 6: Add more information at the top of the page about the company.
+ * Skills used: template literals, ternary operator
+*/
+
+// grab the description container
+const descriptionContainer = document.getElementById("description-container");
+
+// use filter or reduce to count the number of unfunded games
+
+
+// create a string that explains the number of unfunded games using the ternary operator
+
+
+// create a new DOM element containing the template string and append it to the description container
+
+/************************************************************************************
+ * Challenge 7: Select & display the top 2 games
+ * Skills used: spread operator, destructuring, template literals, sort 
+ */
+
+const firstGameContainer = document.getElementById("first-game");
+const secondGameContainer = document.getElementById("second-game");
+
+const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
+    return item2.pledged - item1.pledged;
+});
+
+// use destructuring and the spread operator to grab the first and second games
+
+// create a new element to hold the name of the top pledge game, then append it to the correct element
+
+// do the same for the runner up item// Image credits: Kickstarter
+const games = ` [
+  {
+    "name": "Heroes Of Mythic Americas",
+    "description": "An exciting 5e RPG supplement that heroically represents pre-Columbian American cultures and mythologies",
+    "pledged": 1572,
+    "goal": 10000,
+    "backers": 9,
+    "img": "./assets/heroes_of_mythic_americas.png"
+  },
+  {
+    "name": "Cube Monster",
+    "description": "Be the first champion to reach the top of Mount Kubia in a solo or competitive engine building strategy game",
+    "pledged": 29446,
+    "goal": 20000,
+    "backers": 321,
+    "img": "./assets/cube_monster.png"
+  },
+  {
+    "name": "Zoo Tycoon: The Board Game",
+    "description": "Your zoo in a box with more than 230 Animal Meeples. A highly thematic board game experience for 1-4 players.",
+    "pledged": 442602,
+    "goal": 78480,
+    "backers": 3869,
+    "img": "./assets/zoo_tycoon.png"
+  },
+  {
+    "name": "Deity Tarot",
+    "description": "A fully illustrated 78-card tarot deck with a divinely exalted take on the famous Smith-Waite tarot deck.",
+    "pledged": 109,
+    "goal": 8000,
+    "backers": 3,
+    "img": "./assets/deity_tarot.png"
+  },
+  {
+    "name": "Camouflage | A hand-painting puzzle/adventure game",
+    "description": "Paint your own camouflage to retrieve information, access secret locations and remove the threat to your fellow flying squirrels.",
+    "pledged": 698,
+    "goal": 5140,
+    "backers": 9,
+    "img": "./assets/camouflage.png"
+  },
+  {
+    "name": "Beep Bapp Boom",
+    "description": "The time to explode is getting shorter and shorter, please be alert!",
+    "pledged": 44,
+    "goal": 18133,
+    "backers": 2,
+    "img": "./assets/beep_bapp_boom.png"
+  },
+  {
+    "name": "Frosthaven",
+    "description": "Euro-inspired dungeon crawling sequel to the 2017 smash hit Gloomhaven",
+    "pledged": 69608,
+    "goal": 500000,
+    "backers": 3193,
+    "img": "./assets/frosthaven.png"
+  },
+  {
+    "name": "Mislight - An Adventure Game With A Small Touch Of Thriller",
+    "description": "Be the Light in a realm of Darkness",
+    "pledged": 1036,
+    "goal": 3099,
+    "backers": 32,
+    "img": "./assets/mislight.png"
+  },
+  {
+    "name": "How to Read Minds 2 Kit: Ellusionist x Peter Turner",
+    "description": "Command Attention With These REAL Mind Reading Techniques That Anyone Can Do... The Contents Inside This Kit Will Silence Skeptics.",
+    "pledged": 147975,
+    "goal": 10000,
+    "backers": 1039,
+    "img": "./assets/how_to_read_minds_2.png"
+  },
+  {
+    "name": "A Wayfarer's Tale",
+    "description": "A Wayfarer's Tale, is a Solo to 4 player game where you explore uncharted islands, collecting Treasure while avoiding Monsters.",
+    "pledged": 13039,
+    "goal": 1183,
+    "backers": 1446,
+    "img": "./assets/wayfarers_tale.png"
+  },
+  {
+    "name": "Kingdom Death: Monster 1.5",
+    "description": "A cooperative nightmare horror game experience",
+    "pledged": 94139,
+    "goal": 100000,
+    "backers": 9264,
+    "img": "./assets/kingdom_death.png"
+  }
+]
+`
+const template = `
+{
+"name": "",
+"description": "",
+"pledged": 0,
+"goal": 0,
+"backers": 0,
+"img": ""
+},
+`
+
+export default games;{
+    "type": "module"
+}
+# WEB102 Prework - *Name of App Here*
+
+Submitted by: **Your Name Here**
+
+**Name of your app** is a website for the company Sea Monster Crowdfunding that displays information about the games they have funded.
+
+Time spent: **X** hours spent in total
+
+## Required Features
+
+The following **required** functionality is completed:
+
+* [ ] The introduction section explains the background of the company and how many games remain unfunded.
+* [ ] The Stats section includes information about the total contributions and dollars raised as well as the top two most funded games.
+* [ ] The Our Games section initially displays all games funded by Sea Monster Crowdfunding
+* [ ] The Our Games section has three buttons that allow the user to display only unfunded games, only funded games, or all games.
+
+The following **optional** features are implemented:
+
+* [ ] List anything else that you can get done to improve the app functionality!
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented features:
+
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+<!-- Replace this with whatever GIF tool you used! -->
+GIF created with ...  
+<!-- Recommended tools:
+[Kap](https://getkap.co/) for macOS
+[ScreenToGif](https://www.screentogif.com/) for Windows
+[peek](https://github.com/phw/peek) for Linux. -->
+
+## Notes
+
+Describe any challenges encountered while building the app.
+
+## License
+
+    Copyright [yyyy] [name of copyright owner]
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
