@@ -23,7 +23,7 @@ Smooth Scrolling feature
 
 Here's a walkthrough of implemented features:
 
-<img src='[http://i.imgur.com/link/to/your/gif/file.gif](https://imgur.com/a/wpb4tc0)' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='[[http://i.imgur.com/link/to/your/gif/file.gif](https://imgur.com/a/wpb4tc0)](https://i.imgur.com/yTBRASu.mp4)' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
