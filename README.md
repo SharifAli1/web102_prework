@@ -30,7 +30,7 @@ GIF created with ...
 [<!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->](https://ezgif.com/gif-to-mp4/ezgif-4272e38d2c3f0e.gif)
+[peek](https://github.com/phw/peek) for Linux. -->]([https://ezgif.com/gif-to-mp4/ezgif-4272e38d2c3f0e.gif](https://i.imgur.com/fMVCz6s.mp4))
 
 ## Notes
 
